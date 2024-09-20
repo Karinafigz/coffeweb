@@ -6,6 +6,9 @@
     --light: #ffffff;
 
     --bg-light-fondo:#e6e6fa;
+    --primario: #9b9ad5;
+    --primario-title:#5f5ea3;
+    --secundario: #A3BF42;
    
   }
   * {
@@ -45,9 +48,11 @@
   .btn:hover {
     background:#333;
   }
+
   .heading {
+    padding-top: 3rem;
     text-align: center;
-    margin-bottom: 3rem;  
+    margin-bottom: .5rem;  
   }
   .heading img {
     height:4rem;
@@ -113,6 +118,34 @@
     transform:rotate(180deg);
   }
   /* header section ends  */
+  /* home section starts  */
+  .home-bg {
+    background: linear-gradient(20deg, #fff, transparent 70%), url(../Actividad2/hom2.png) no-repeat;
+    background-size: cover;
+    background-position: center bottom; 
+  }
+.home-bg .home {
+  min-height: 70rem;
+  display: flex;
+  align-items:center;
+}
+.home-bg .home .content {
+  width:80rem;
+  text-align: center;
+}
+.home-bg .home .content  h3{
+  font-size: 6rem;
+  color:#333; 
+  font-family: 'Merienda One',cursive;
+}
+.home-bg .home .content p {
+  padding:1rem 0; 
+  font-size: 3rem;
+  color:var(--main-color); 
+  line-height: 2;
+}
+/* home section ends  */
+
   /* about section starts  */
   .about {
     display: flex;
@@ -142,46 +175,31 @@
     color:var(--light-color);
   }
   /* about section ends  */
- .productos form {
+  .producto {
     display: flex;
-    flex-wrap: wrap; 
-    gap: 10px;
-}
-.productos .image {
-    display: flex; 
-    justify-content: center; 
-    width: 100%; 
-    margin-bottom: 20px; 
-}
-.productos .image img {
-    max-width: 100%;
-    height: auto; 
-}
-.productos .parrafo{
-    width:100%; 
-    padding:2rem; 
-    font-size:1.7rem;
-    color:#242323;
-    text-transform: none;
-    background:none;
+    align-items: center;
+    flex-wrap:wrap;
+    gap:4rem;
+    
+  }
+  .producto .image {
+    flex:1 1 40rem; 
+  }
+  .producto .image img{
+    width:100%;
+  }
+  .producto .content{
+    flex:1 1 40rem;
+  }
+  .producto .content p {
+    padding:1rem 0; 
+    line-height: 2;
+    font-size:1.5rem;
+    color:var(--light-color);
     text-align: justify;
-}
-.productos .btn {
-    flex: 1 18%; 
-    padding: 10px 0;
-    font-size: 16px; 
-    color: #ffffff;
-    background:var(--main-color);
-    border: none;
-    border-radius: 5px; 
-    text-align: center; 
-    text-decoration: none; 
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.productos .btn:hover {
-    background:#333;
-}
+  }
+
+
 .facility .box-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(27rem,1fr));
@@ -268,6 +286,9 @@
   font-weight: bold; 
   border: 1px solid #a72525; 
 }
+.btn-espacio {
+  margin-right: 10px; 
+}
 table{
   width: 100%;
   border-collapse: collapse;
@@ -283,3 +304,128 @@ tr:nth-child(even){
    background:var(--light);
 }
 /* Media queries para ser responsivo*/
+
+/* gallery section starts  */
+.gallery .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 33rem);
+  gap:2rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+.gallery .box-container img {
+  width:100%; 
+  height:100%;
+  object-fit: cover;
+}
+/* gallery section ends  */
+
+
+/* footer section starts  */
+.footer .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+  gap:1.5rem;
+  align-items: flex-start;
+}
+.footer .box {
+  text-align: center;
+}
+.footer .box-container .box i {
+  font-size: 2.5rem;
+  line-height: 6rem;
+  height:6rem;
+  width:6rem;
+  border-radius:50%;
+  background:var(--main-color);
+  color:#fff;
+  margin-bottom: 1rem;
+
+}
+.footer .box-container .box h3 {
+  margin:1rem 0; 
+  font-size:2rem; 
+  color:#333;
+}
+.footer .box-container .box p {
+  line-height: 2;
+  font-size:1.6rem;
+  color:var(--light-color);
+}
+.footer .credit {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top:2.5rem; 
+  border-top:var(--border); 
+  font-size:2rem;
+  color:#333;
+}
+.footer .credit span {
+  color:var(--main-color);
+}
+/* footer section ends  */
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  /* Estilos básicos para ambos botones */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 19px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.btn.active {
+  /* Estilos específicos para el botón activo */
+  background-color:var(--primario);
+  color: white;
+}
+.diagonal {
+
+  border: 1px solid rgba(70, 70, 70, 0.5);/* Ajusta el grosor y color del borde */
+  width: 30px; /* Ajusta el largo de la diagonal */
+  transform: rotate(45deg); /* Rota la diagonal 45 grados */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -9,7 +9,6 @@ idForm=JSON.parse(idForm);
 if(idForm==null){
     idForm=0;
 }
-
 cargarPagina();
 function guardar() {
     Swal.fire({
