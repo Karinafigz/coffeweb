@@ -89,19 +89,18 @@ function guardar() {
       }
     });
   }
-  function cargarPagina(){
-    if(idForm>0){
-        for(const i in tablaProducto){
-            let Producto= JSON.parse(tablaProducto[i]);
-            if(Producto.idProducto==idForm){
-                document.getElementById("IdProducto").value=Producto.idProducto;
-                document.getElementById("IdNombre").value=Producto.nombre;
-                document.getElementById("IdDescripcion").value=Producto.descripcion;
-                document.getElementById("IdCantidad").value=Producto.cantidad;
-                document.getElementById("IdCosto").value=Producto.costo;
-                break;
-            }
+  function cargarPagina() {
+    if (idForm > 0) {
+        const producto = tablaProducto.find(p => p.idProducto === idForm);
+        if (producto) {
+            // Llenar los campos del formulario con los datos del producto
+            document.getElementById("IdProducto").value = producto.idProducto;
+            document.getElementById("IdNombre").value = producto.nombre;
+            document.getElementById("IdDescripcion").value = producto.descripcion;
+            document.getElementById("IdCantidad").value = producto.cantidad;
+            document.getElementById("IdCosto").value = producto.costo;
+        } else {
+            console.error("No se encontró el producto con ID:", idForm);
         }
-
     }
 }

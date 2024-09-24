@@ -1,15 +1,14 @@
 :root {
-    --main-color:#be9c79;
-    --light-color:#666;
-    --border:.1rem solid #333; 
-    --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
-    --light: #ffffff;
+  --main-color:#be9c79;
+  --light-color:#666;
+  --border:.1rem solid #333; 
+  --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
+  --light: #ffffff;
 
-    --bg-light-fondo:#e6e6fa;
-    --primario: #9b9ad5;
-    --primario-title:#5f5ea3;
-    --secundario: #A3BF42;
-   
+  --bg-light-fondo:#e6e6fa;
+  --primario: #9b9ad5;
+  --primario-title:#5f5ea3;
+  --secundario: #A3BF42;
   }
   * {
       margin :0;
@@ -48,7 +47,10 @@
   .btn:hover {
     background:#333;
   }
-
+  .btn.active {
+    background-color:var(--primario-title);
+    color: white;
+  }
   .heading {
     padding-top: 3rem;
     text-align: center;
@@ -120,30 +122,30 @@
   /* header section ends  */
   /* home section starts  */
   .home-bg {
-    background: linear-gradient(20deg, #fff, transparent 70%), url(../Actividad2/hom2.png) no-repeat;
+    background: linear-gradient(20deg, #fff, transparent 70%), url(hom2.png) no-repeat;
     background-size: cover;
     background-position: center bottom; 
   }
-.home-bg .home {
-  min-height: 70rem;
-  display: flex;
-  align-items:center;
-}
-.home-bg .home .content {
-  width:80rem;
-  text-align: center;
-}
-.home-bg .home .content  h3{
-  font-size: 6rem;
-  color:#333; 
-  font-family: 'Merienda One',cursive;
-}
-.home-bg .home .content p {
-  padding:1rem 0; 
-  font-size: 3rem;
-  color:var(--main-color); 
-  line-height: 2;
-}
+  .home-bg .home {
+    min-height: 70rem;
+    display: flex;
+    align-items:center;
+  }
+  .home-bg .home .content {
+    width:80rem;
+    text-align: center;
+  }
+  .home-bg .home .content  h3{
+    font-size: 6rem;
+    color:#333; 
+    font-family: 'Merienda One',cursive;
+  }
+  .home-bg .home .content p {
+    padding:1rem 0; 
+    font-size: 3rem;
+    color:var(--main-color); 
+    line-height: 2;
+  }
 /* home section ends  */
 
   /* about section starts  */
@@ -175,6 +177,7 @@
     color:var(--light-color);
   }
   /* about section ends  */
+  /*Agregar productos*/
   .producto {
     display: flex;
     align-items: center;
@@ -198,33 +201,40 @@
     color:var(--light-color);
     text-align: justify;
   }
+  .producto .button-container {
+    display: flex;
+   gap: 20px;
+  
+  }
+  /*termina agregar productos*/
 
-
-.facility .box-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(27rem,1fr));
-  gap:1.5rem;
-  align-items: flex-start;
-}
-.facility .box-container .box{
- text-align: center;
-}
-.facility .box-container .box img{
- height:10rem;
- margin-bottom: .5rem;
-}
-.fondo{
-  position:relative;
-  width: 400px;
-  height: 530px;
-  background:#fff;
-  border: 2px solid rgba(16, 16, 16, 0.5);
-  border-radius: 10px;
-  box-shadow: 0 0 30px rgba (0,0,0,.5);
-  display:flex;
-  justify-content: center;
-  align-items: center;
-}
+/*iconos del inventario*/
+  .facility .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(27rem,1fr));
+    gap:1.5rem;
+    align-items: flex-start;
+  }
+  .facility .box-container .box{
+  text-align: center;
+  }
+  .facility .box-container .box img{
+  height:10rem;
+  margin-bottom: .5rem;
+  }
+  .fondo{
+    position:relative;
+    width: 400px;
+    height: 530px;
+    background:#fff;
+    border: 2px solid rgba(16, 16, 16, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba (0,0,0,.5);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /*termina los iconos del inventario*/
 
 .contenedor-input {
     width:100%;
@@ -371,32 +381,144 @@ tr:nth-child(even){
 }
 
 
+
+
+
+
+
+
+.products  .box-container{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 1.5rem;
+}
+.products  .box-container .box{
+  flex:1 1 30rem;
+  box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.1);
+  border-radius: .5rem;
+  border:.1rem solid rgba(0,0,0,.1);
+  position: relative;
+}
+.products  .box-container .box .discount{
+  position: absolute;
+  top:1rem; left:1rem;
+  padding: .7rem 1rem;
+  font-size: 2rem;
+  color:rgb(145, 9, 83);
+  background: rgba(255,51,153,.05);
+  z-index: 1;
+  border-radius: .5rem;
+}
+.products  .box-container .box  .image{
+  position: relative;
+  text-align: center;
+  padding-top: 2rem;
+  overflow: hidden;
+
+
+}
+.products  .box-container .box  .image img{
+  height:30rem ;
+}
+.products  .box-container .box:hover  .image img{
+  transform: scale(1.1);
+}
+.products  .box-container .box  .image .icons{
+  position: absolute;
+  bottom:-7rem; left: 0; right:0;
+  display:flex
+
+}
+.products  .box-container .box:hover .image .icons{
+  bottom: 0;
+
+}
+.products  .box-container .box  .image .icons a{
+  height: 5rem;
+  line-height: 5rem;
+  font-size: 2rem;
+  width: 50%;
+  background:#eee5dd;
+  color:#81066e;
+}
+.products  .box-container .box  .image .icons .cart-btn{
+  border-left:.1rem solid #fff7;
+  border-right:.1rem solid #fff7;
+  width:100%
+}
+.products  .box-container .box  .image .icons a:hover{
+ 
+  background: rgba(245, 183, 177 );
+}
+.products  .box-container .box .content {
+  padding:2rem;
+  text-align: center;
+}
+.products  .box-container .box .content  h3{
+  font-size: 2.5rem;
+  color:#333;
+}
+.products  .box-container .box .content  .price{
+  font-size: 2.5rem;
+  color:#791469;
+  font-weight: bolder;
+  padding-top: 1rem;
+}
+.products  .box-container .box .content  .price span{
+  font-size: 1.5rem;
+  color:#999;
+  font-weight: lighter;
+  text-decoration: line-through;
+}
+
+
+
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-.btn {
-  /* Estilos básicos para ambos botones */
-  padding: 10px 20px;
-  border: none;
-  border-radius: 19px;
-  cursor: pointer;
-  margin: 10px;
-}
-
-.btn.active {
-  /* Estilos específicos para el botón activo */
-  background-color:var(--primario);
-  color: white;
-}
 .diagonal {
 
-  border: 1px solid rgba(70, 70, 70, 0.5);/* Ajusta el grosor y color del borde */
-  width: 30px; /* Ajusta el largo de la diagonal */
-  transform: rotate(45deg); /* Rota la diagonal 45 grados */
+  border: 1px solid rgba(50, 50, 50, 0.5);
+  width: 40px;
+  transform: rotate(45deg);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

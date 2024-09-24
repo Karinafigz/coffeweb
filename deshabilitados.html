@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos Deshabilitados</title>
+    <link rel="stylesheet" href="style.css"> <!-- Si tienes estilos adicionales -->
+</head>
+<body>
+   <!-- header section start  -->
+   <header class="header" id="header">   
+      <section class="flex">
+          <a href="#" class="logo"><img src="cof.webp" alt=""></a>
+          <nav class="navegacion">
+              <a href="index.html">Inicio</a>
+              <a href="menu-producto.html">Menu</a>
+              <a href="productos.html">Inventario</a>
+            
+          </nav>
+          <div id="menu-btn" class="fas fa-bars"></div>
+      </section>
+   </header>
+   <section class="facility">
+
+    <div class="heading">
+        <img src="heading-img.png" alt="">
+        <h3>Productos Deshabilitados</h3>
+    </div>
+  
+    <div class="box-container">
+  
+        <div class="box">
+            <img src="icon-1.png" alt="">
+            
+        </div>
+  
+        <div class="box">
+            <img src="icon-3.png" alt="">
+           
+        </div>
+  
+        <div class="box">
+            <img src="icon-4.png" alt="">
+            
+        </div>
+  
+        <div class="box">
+            <img src="icon-2.png" alt="">
+           
+        </div>
+    </div>
+  </section>
+
+   <!---Botones de habilitar y deshabilitar-->
+   <div class="container">
+      <a href="productos.html"  class="btn">Agregar Producto</a>
+      <div class="diagonal"></div>
+      <a href="listainventario.html"  class="btn">Habilitados</a>
+      <div class="diagonal"></div>
+      <button class="btn active">Deshabilitados</button> 
+  </div>
+
+    <!-- Tabla para mostrar los productos deshabilitados -->
+    <section>
+      <div class="tabular-wrapper  ">
+        <div class="table-container" id="tableProductos">
+            <table id="tablaProductosDeshabilitados">
+                <thead class="cabecera">
+                    <tr class="text-center">
+                      <tr>
+                        <td>ID</td>
+                        <td>Nombre Producto</td>
+                        <td>Descripción</td>
+                        <td>Cantidad</td>
+                        <td>Costo Unitario</td>
+                        <td>Acciones</td>
+                      </tr>
+                    </tr>
+                    <tbody id="dataProductosDeshabilitados"></tbody>
+                </thead>
+            </table>
+        </div>
+      </div>
+      </section>
+
+    <script>
+        // Obtener los productos deshabilitados desde el localStorage
+        let productosDeshabilitados = JSON.parse(localStorage.getItem("productosDeshabilitados")) || [];
+        
+        // Función para listar los productos deshabilitados en la tabla
+        function listarProductosDeshabilitados() {
+            let dataFila = '';
+            if (productosDeshabilitados.length > 0) {
+                productosDeshabilitados.forEach(producto => {
+                    dataFila += "<tr>";
+                    dataFila += "<td>" + producto.idProducto + "</td>";
+                    dataFila += "<td>" + producto.nombre + "</td>";
+                    dataFila += "<td>" + producto.descripcion + "</td>";
+                    dataFila += "<td>" + producto.cantidad + "</td>";
+                    dataFila += "<td>" + producto.costo + "</td>";
+                    dataFila += "<td>" +
+                      "<button type='button' class='btn btn-warning btn-espacio' onclick='habilitarProducto(" + producto.idProducto + ")' id='"+ producto.idProducto +"'>Habilitar</button>"+
+                      "</td>";
+                    dataFila += "</tr>";
+                });
+            } else {
+                dataFila += "<tr><td colspan='5'>No hay productos deshabilitados.</td></tr>";
+            }
+            document.getElementById("dataProductosDeshabilitados").innerHTML = dataFila;
+        }
+function habilitarProducto(id) {
+    // Encuentra el índice del producto en el arreglo
+    const index = productosDeshabilitados.findIndex(producto => producto.idProducto === id);
+  
+    
+    // Si se encontró el producto, proceder con la eliminación
+    if (index !== -1) {
+      // Confirmación al usuario
+      if (confirm("¿Estás seguro de que deseas habilitar este producto?")) {
+        let productos = JSON.parse(localStorage.getItem("tablaProductoStorage")) || [];
+
+        productos.push({
+          idProducto: id,
+          nombre: productosDeshabilitados.find(p => p.idProducto === id).nombre,
+          descripcion: productosDeshabilitados.find(p => p.idProducto === id).descripcion,
+          cantidad: productosDeshabilitados.find(p => p.idProducto === id).cantidad,
+          costo: productosDeshabilitados.find(p => p.idProducto === id).costo,
+          // ... (agregar los demás datos del producto)
+        });
+        // Eliminar el producto del arreglo
+        productosDeshabilitados.splice(index, 1);
+  
+        // Actualizar el localStorage
+        localStorage.setItem("productosDeshabilitados", JSON.stringify(productosDeshabilitados));
+        localStorage.setItem("tablaProductoStorage", JSON.stringify(productos));
+
+  
+        // Ocultar visualmente el elemento
+        document.getElementById(id).style.display = "none";
+  
+        // Actualizar la lista de productos
+        listarProductosDeshabilitados();
+        console.log("Productos deshabilitados:", productosDeshabilitados);
+        window.location.href = "deshabilitados.html";
+      } else {
+        // Si el usuario cancela, mostrar un mensaje
+        alert("Se canceló la operación de habilitado.");
+      }
+    } else {
+      // Si el producto no se encuentra, mostrar un mensaje de error
+      alert("No se encontró el producto a habilitar.");
+    }
+  }
+        // Llamar a la función para mostrar los productos deshabilitados al cargar la página
+        listarProductosDeshabilitados();
+    </script>
+</body>
+</html>

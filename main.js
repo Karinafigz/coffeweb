@@ -71,7 +71,7 @@
         // Actualizar la lista de productos
         listar();
         console.log("Productos deshabilitados:", productosDeshabilitados);
-        window.location.href = "cafe.html";
+        window.location.href = "deshabilitados.html";
       } else {
         // Si el usuario cancela, mostrar un mensaje
         alert("Se canceló la operación de deshabilitado.");
@@ -81,26 +81,4 @@
       alert("No se encontró el producto a deshabilitar.");
     }
   }
-
-
-
-
-
-  //function listarProductosDeshabilitados() {
-  //  let dataFila = '';
-  //  if (productosDeshabilitados.length > 0) {
-  //    for (const producto of productosDeshabilitados) {
-    //    dataFila += "<tr  id="+ producto.idProducto +">";
-      //  dataFila += "<td>" + producto.idProducto + "</td>";
-        // Agregar las columnas de los datos del producto
-       // dataFila += "</tr>";
-      //}
-      //document.getElementById("dataProductosDeshabilitados").innerHTML = dataFila;
-    //}
-  //}
-  // function deshabilitarProducto(id) {
-  //   console.log(id);
-  //   document.getElementById(id).style.display = "none";
-  // }
-  // muestra los productos
   listar();
